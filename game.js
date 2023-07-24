@@ -35,7 +35,8 @@ class Game {
 
         window.requestAnimationFrame(()=>{
         player1.move()
-        player2.move() 
+        player2.move()
+        this.overCheck()
         this.gameLoop()
         });
     };
@@ -51,5 +52,16 @@ class Game {
             player2.isEliminated = false
         }
     document.getElementById("next-round-btn").style.display = "block"
+    }
+
+    overCheck() {
+
+        let condition1 = this.scoreP1 === 2 && this.scoreP2 === 0
+        let condition2 = this.scoreP2 === 2 && this.scoreP1 === 0
+        let condition3 = this.scoreP2 === 3 || this.scoreP1 === 3
+        
+        if (condition1 || condition2 || condition3) {
+            this.endScreen.style.display = "block"
+        }
     }
 }

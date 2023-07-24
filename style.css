@@ -33,6 +33,23 @@ button {
     border: 2px solid black;
 }
 
+#end-screen {
+    width: 500px;
+    height: 300px;
+    background-color: blue;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#game-over-text{
+    color: white;
+    padding-top: 120px;
+}
+
+
 .center {
     display: flex;
     flex-direction: row;
