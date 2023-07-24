@@ -22,10 +22,25 @@ class Game {
         this.gameLoop();
 
     };
+    //This function updates the score element on the screen
+    updateScore(){
+        document.getElementById("p1-score").textContent = `${this.scoreP1}`
+        document.getElementById("p2-score").textContent = `${this.scoreP2}`
+    }
 
     gameLoop(){
         if (this.gameIsOver){
-            return
+            if (player1.isEliminated) {
+                this.scoreP2 += 1
+                console.log(this.scoreP2);
+                this.updateScore()
+            } else {
+                this.scoreP1 += 1
+                console.log(this.scoreP1);
+                this.updateScore()
+            }
+        document.getElementById("next-round-btn").style.display = "block"
+        return
         };
 
         window.requestAnimationFrame(()=>{

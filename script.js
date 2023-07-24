@@ -1,9 +1,12 @@
 console.log("script.js is working...");
 
+
+
 const player1 = new Player("./img/js-1.png", 250, 180, "p1")
 const player2 = new Player("./img/js-1.png", 100, 180, "p2")
-const platform = document.querySelector("#platform")
 const game = new Game()
+const nextRoundBtn = document.getElementById("next-round-bt")
+const platform = document.querySelector("#platform")
 
 game.gameLoop()
 
@@ -12,6 +15,13 @@ game.gameLoop()
 window.addEventListener("keydown",(event)=>{
     handleKeyboardInput(event.key)
   })
+
+nextRoundBtn.addEventListener("click", ()=>{
+    game.gameLoop()
+})
+
+
+
 
 
 // Script related functions ----------------------------------------------------
