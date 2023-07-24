@@ -12,7 +12,7 @@ class Game {
         this.scoreP1 = 0
         this.scoreP2 = 0
         this.gameIsOver = false
-        this.fighterType = ["Python", "Java", "JavaScript", "C#", "PHP", "TypeScript", "C++"]
+        this.fighterTypes = ["Python", "Java", "JavaScript", "C#", "PHP", "TypeScript", "C++"]
     };
 
     start(){
