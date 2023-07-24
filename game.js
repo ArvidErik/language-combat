@@ -29,7 +29,6 @@ class Game {
         };
 
         this.update()
-
         window.requestAnimationFrame(()=>{
             this.gameLoop()
         });
