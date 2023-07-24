@@ -43,7 +43,7 @@ class Player {
         if (this.top > this.platform.offsetHeight - this.height) {
             this.top = this.platform.offsetHeight - this.height;
         }
-        this.updatePosition();
+        // this.updatePosition();
     }
 
     updatePosition(type){
