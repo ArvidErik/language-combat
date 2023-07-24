@@ -7,8 +7,7 @@ class Game {
         this.gameScreen = document.querySelector("#game-screen")
         this.endScreen = document.querySelector("#end-screen")
 
-        // this.player1 = new Player
-        // this.player2 = new Player
+
         this.scoreP1 = 0
         this.scoreP2 = 0
         this.gameIsOver = false
@@ -30,24 +29,27 @@ class Game {
 
     gameLoop(){
         if (this.gameIsOver){
-            if (player1.isEliminated) {
-                this.scoreP2 += 1
-                console.log(this.scoreP2);
-                this.updateScore()
-            } else {
-                this.scoreP1 += 1
-                console.log(this.scoreP1);
-                this.updateScore()
-            }
-        document.getElementById("next-round-btn").style.display = "block"
+            console.log("Game Over");
         return
         };
 
         window.requestAnimationFrame(()=>{
         player1.move()
-        player2.move()
-
+        player2.move() 
         this.gameLoop()
         });
     };
+
+    scoreCheck () {
+        if (player1.isEliminated) {
+            this.scoreP2 += 1
+            this.updateScore()
+            player1.isEliminated = false
+        } else if (player2.isEliminated){
+            this.scoreP1 += 1
+            this.updateScore()
+            player2.isEliminated = false
+        }
+    document.getElementById("next-round-btn").style.display = "block"
+    }
 }

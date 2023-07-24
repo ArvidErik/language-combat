@@ -5,11 +5,10 @@ console.log("script.js is working...");
 const player1 = new Player("./img/js-1.png", 250, 180, "p1")
 const player2 = new Player("./img/js-1.png", 100, 180, "p2")
 const game = new Game()
-const nextRoundBtn = document.getElementById("next-round-bt")
+const nextRoundBtn = document.getElementById("next-round-btn")
 const platform = document.querySelector("#platform")
 
 game.gameLoop()
-
 
 
 window.addEventListener("keydown",(event)=>{
@@ -17,7 +16,14 @@ window.addEventListener("keydown",(event)=>{
   })
 
 nextRoundBtn.addEventListener("click", ()=>{
-    game.gameLoop()
+    player1.resetPosition()
+    player2.resetPosition()
+    game.gameIsOver = false
+    nextRoundBtn.style.display = "none"
+    countBack();
+    setTimeout(() => {
+    game.gameLoop() 
+    }, 3000);
 })
 
 
@@ -56,3 +62,16 @@ function handleKeyboardInput(key){
         player2.x = 1;
       }
   }
+
+  function countBack () {
+    let i = 3
+
+    setInterval(() => {
+        if (i > 0) {
+            console.log(i--);
+        } else {
+            clearInterval()
+        }     
+    }, 1000);
+  }
+

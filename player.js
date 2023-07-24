@@ -35,30 +35,65 @@ class Player {
             this.isEliminated = true;
             this.element.style.opacity = "0.2";
             game.gameIsOver = true;
+            game.scoreCheck()
         }
         
         if(this.top <0){
             this.isEliminated = true;
             this.element.style.opacity = "0.2";
             game.gameIsOver = true;
+            game.scoreCheck()
         }
 
         if (this.left > this.platform.offsetWidth - this.width) {
             this.isEliminated = true;
             this.element.style.opacity = "0.2";
             game.gameIsOver = true;
+            game.scoreCheck()
         }
 
         if (this.top > this.platform.offsetHeight - this.height) {
             this.isEliminated = true;
             this.element.style.opacity = "0.2";
             game.gameIsOver = true;
+            game.scoreCheck()
         }
         this.updatePosition();
+        
     }
 
     updatePosition(){
             this.element.style.left = `${this.left}px`
             this.element.style.top = `${this.top}px`
     }
+
+    //resets the players position to the starting point
+    resetPosition(){
+        if (this.type === "p1") {
+            this.element.style.left = "250px"
+            this.element.style.top = "180px"
+            this.left = 250
+            this.top = 180
+            this.x = 0
+            this.y = 0
+            this.element.style.opacity = "1"
+            this.isEliminated = false
+
+        } else {
+            this.element.style.left = "100px"
+            this.element.style.top = "180px"
+            this.left = 100
+            this.top = 180
+            this.x = 0
+            this.y = 0
+            this.element.style.opacity = "1"
+            this.isEliminated = false           
+        }       
+    };
+
+    
+
+
+
+
 }
