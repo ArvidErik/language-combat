@@ -16,8 +16,8 @@ class Player {
         this.element.style.position = "absolute"
         this.element.style.width = "50px"
         this.element.style.height = "50px"
-        this.element.style.left = `${left}px`
-        this.element.style.top = `${top}px`
+        this.element.style.left = `${this.left}px`
+        this.element.style.top = `${this.top}px`
         this.element.style.borderRadius = "50%"
 
         this.platform.appendChild(this.element)
@@ -43,16 +43,11 @@ class Player {
         if (this.top > this.platform.offsetHeight - this.height) {
             this.top = this.platform.offsetHeight - this.height;
         }
-        // this.updatePosition();
+        this.updatePosition();
     }
 
-    updatePosition(type){
-        if (type === "p1") {
+    updatePosition(){
             this.element.style.left = `${this.left}px`
             this.element.style.top = `${this.top}px`
-        } else if (type === "p2") {
-            this.element.style.left = `${this.left + 50}px`
-            this.element.style.top = `${this.top}px`
-    }
     }
 }

@@ -7,8 +7,8 @@ class Game {
         this.gameScreen = document.querySelector("#game-screen")
         this.endScreen = document.querySelector("#end-screen")
 
-        this.player1 = new Player
-        this.player2 = new Player
+        // this.player1 = new Player
+        // this.player2 = new Player
         this.scoreP1 = 0
         this.scoreP2 = 0
         this.gameIsOver = false
@@ -28,14 +28,11 @@ class Game {
             return
         };
 
-        this.update()
         window.requestAnimationFrame(()=>{
-            this.gameLoop()
+        player1.move()
+        player2.move()
+
+        this.gameLoop()
         });
     };
-
-    update() {
-        this.player1.move();
-        this.player2.move();
-    }
 }
