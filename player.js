@@ -88,8 +88,10 @@ class Player {
             this.y = 0
             this.element.style.opacity = "1"
             this.isEliminated = false           
-        }       
+        }
     };
+
+
 
     
 

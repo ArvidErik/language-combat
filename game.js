@@ -36,6 +36,7 @@ class Game {
         window.requestAnimationFrame(()=>{
         player1.move()
         player2.move()
+        this.collissionDetection()
         this.overCheck()
         this.gameLoop()
         });
@@ -64,4 +65,118 @@ class Game {
             this.endScreen.style.display = "block"
         }
     }
+
+    collissionDetection() {
+    
+        // Calculate the center coordinates of the player1 circle
+        const player1XCenter = player1.element.offsetLeft + player1.element.offsetWidth / 2;
+        const player1YCenter = player1.element.offsetTop + player1.element.offsetHeight / 2;
+    
+        // Calculate the center coordinates of the player2 circle
+        const player2XCenter = player2.element.offsetLeft + player2.element.offsetWidth / 2;
+        const player2YCenter = player2.element.offsetTop + player2.element.offsetHeight / 2;
+    
+        // Calculate the distance between the two circles centers
+        const distance = Math.sqrt((player1XCenter - player2XCenter) ** 2 + (player1YCenter - player2YCenter) ** 2);
+    
+        // Calculate the minimum distance needed for a collision (sum of the radii)
+        const minDistance = player1.element.offsetWidth / 2 + player2.element.offsetWidth / 2;
+    
+        // If the distance is less than the minimum distance, a collision is detected
+        if (distance < minDistance) {
+            console.log('Collision detected!');
+            this.bounceBack()
+        }
+    }
+
+    bounceBack() {
+        const p1Left = player1.element.style.left
+        const p1Top = player1.element.style.top
+        const p2Left = player2.element.style.left
+        const p2Top = player2.element.style.top
+
+
+
+        const velocity = 20
+
+        //conditions
+        const tLQuarter = (p1Left < p2Left && p1Top < p2Top)
+        const tRQuarter = (p1Left > p2Left && p1Top < p2Top)
+        const bLQuarter = (p1Left < p2Left && p1Top > p2Top)
+        const bRQuarter = (p1Left > p2Left && p1Top > p2Top)
+        const tside = (p1Left === p2Left && p1Top > p2Top)
+        const bside = (p1Left === p2Left && p1Top < p2Top)
+        const lside = (p1Left < p2Left && p1Top === p2Top)
+        const rside = (p1Left > p2Left && p1Top === p2Top)
+         
+
+        if (tLQuarter) {
+            player1.top += velocity
+            player1.left -= velocity
+            player2.top -= velocity
+            player2.left += velocity
+            
+            console.log("tL happened");
+
+        }
+        else if (tRQuarter){
+            player1.top += velocity
+            player1.left += velocity
+            player2.top -= velocity
+            player2.left -= velocity
+
+            console.log("tR happened");
+
+        }
+        else if (bLQuarter){
+            player1.top -= velocity
+            player1.left -= velocity
+            player2.top += velocity
+            player2.left += velocity
+
+            console.log("bL happened");
+
+        }
+        else if (bRQuarter){
+            player1.top += velocity
+            player1.left -= velocity
+            player2.top -= velocity
+            player2.left += velocity
+
+            console.log("bR happened");
+
+        }
+        else if (tside){
+            player1.top += velocity
+            player2.top -= velocity
+
+            console.log("ts happened");
+
+        }
+        else if (bside){
+            player1.top -= velocity
+            player2.top += velocity
+
+            console.log("bs happened");
+
+        }
+        else if (lside){
+            player1.left -= velocity
+            player2.left += velocity
+
+            console.log("bR happened");
+
+        }
+        else if (rside){
+            player1.left += velocity
+            player2.left -= velocity
+
+            console.log("RS happened");
+
+        }
+
+        player1.updatePosition()
+        player2.updatePosition()
+    }
 }
+
