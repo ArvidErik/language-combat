@@ -58,6 +58,14 @@ h2 {
     padding-top: 120px;
 }
 
+#p1{
+    border: 2px solid red;
+}
+
+#p2{
+    border: 2px solid blue;
+}
+
 .title {
     color: white;
     font-size: 2em;

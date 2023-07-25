@@ -8,8 +8,8 @@ class Player {
         this.width = 50
         this.height = 50
         this.isEliminated = false
-        // this.velocityX
-        // this.velocityY
+        this.velocityX = 0
+        this.velocityY = 0
         this.element = document.createElement("img")
         this.platform = document.querySelector("#platform")
         
@@ -29,6 +29,9 @@ class Player {
     move() {
         this.left += this.x;
         this.top += this.y;
+        this.velocityX += this.x;
+        this.velocityY += this.y;
+
            
      
         if(this.left <0){
@@ -91,6 +94,7 @@ class Player {
         }
     };
 
+    
 
 
     
