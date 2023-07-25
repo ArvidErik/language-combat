@@ -29,10 +29,6 @@ class Player {
     move() {
         this.left += this.x;
         this.top += this.y;
-        this.velocityX += this.x;
-        this.velocityY += this.y;
-
-           
      
         if(this.left <0){
             this.isEliminated = true;
@@ -93,9 +89,16 @@ class Player {
             this.isEliminated = false           
         }
     };
+ 
+    restoreVelocity(px, py){
+        if (px > 0) {
+            this.velocityX = 0
+        }
 
-    
-
+        if (py != this.y) {
+            this.velocityY = 0
+        }
+    }
 
     
 

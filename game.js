@@ -36,6 +36,7 @@ class Game {
         };
 
         window.requestAnimationFrame(()=>{
+
         player1.move()
         player2.move()
 
@@ -48,6 +49,7 @@ class Game {
         this.overCheck()
         this.gameLoop()
         });
+        
     };
     
     scoreCheck () {
@@ -208,7 +210,6 @@ class Game {
         }
     }
 
-    
 
 }
 
