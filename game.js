@@ -14,13 +14,15 @@ class Game {
         this.fighterTypes = ["Python", "Java", "JavaScript", "C#", "PHP", "TypeScript", "C++"]
     };
 
+    
+
     start(){
         this.selectFighterScreen.style.display = "none";
         this.gameScreen.style.display = "block";
 
         this.gameLoop();
 
-    };
+    }
     //This function updates the score element on the screen
     updateScore(){
         document.getElementById("p1-score").textContent = `${this.scoreP1}`

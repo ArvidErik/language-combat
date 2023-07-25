@@ -6,9 +6,25 @@ const player1 = new Player("./img/js-1.png", 250, 180, "p1")
 const player2 = new Player("./img/js-1.png", 100, 180, "p2")
 const game = new Game()
 const nextRoundBtn = document.getElementById("next-round-btn")
+const startButton = document.getElementById("start-btn")
 const platform = document.querySelector("#platform")
 
 game.gameLoop()
+
+
+startButton.addEventListener("click",()=>{
+    let newDiv = document.createElement('div')
+    newDiv.className = "fighter-container"
+    game.fighterTypes.forEach((fighter)=>{
+      let fighterDiv = document.createElement('div')
+      fighterDiv.className = "fighter"
+      let figtherContent = document.createTextNode(fighter)
+
+      fighterDiv.appendChild(figtherContent)
+      newDiv.appendChild(fighterDiv)
+    })
+    game.startScreen.appendChild(newDiv)
+})
 
 
 window.addEventListener("keydown",(event)=>{
@@ -25,6 +41,10 @@ nextRoundBtn.addEventListener("click", ()=>{
     game.gameLoop() 
     }, 3000);
 })
+
+
+
+
 
 
 

@@ -14,8 +14,10 @@ img {
     border: 1px solid black;
 }
 
-button {
-    display: none;
+
+
+h2 {
+    color: white;
 }
 
 #title {
@@ -31,6 +33,13 @@ button {
     left: 50%;
     transform: translate(-50%, -50%);
     border: 2px solid black;
+}
+
+#start-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
 }
 
 #end-screen {
@@ -49,9 +58,28 @@ button {
     padding-top: 120px;
 }
 
+.title {
+    color: white;
+    font-size: 2em;
+}
 
 .center {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    display: none;
+}
+
+.fighter-container {
+    margin-top: 2.5em;
+    align-self: center;
+    width: 80vw;
+    display: flex;
+    align-self: center;
+    flex-direction: row;
+    justify-content: space-around;
 }
