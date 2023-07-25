@@ -122,9 +122,9 @@ class Game {
          
 
         if (tLQuarter) {
-            player1.top += velocity
+            player1.top -= velocity
             player1.left -= velocity
-            player2.top -= velocity
+            player2.top += velocity
             player2.left += velocity
 
             player1.updatePosition()
@@ -146,9 +146,9 @@ class Game {
 
         }
         else if (bLQuarter){
-            player1.top -= velocity
+            player1.top += velocity
             player1.left -= velocity
-            player2.top += velocity
+            player2.top -= velocity
             player2.left += velocity
 
             player1.updatePosition()
@@ -159,9 +159,9 @@ class Game {
         }
         else if (bRQuarter){
             player1.top += velocity
-            player1.left -= velocity
+            player1.left += velocity
             player2.top -= velocity
-            player2.left += velocity
+            player2.left -= velocity
 
             player1.updatePosition()
             player2.updatePosition()
