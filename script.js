@@ -57,29 +57,38 @@ function handleKeyboardInput(key){
     // player1 movement
     if(key === "ArrowUp"){
       player1.y = -1;
+      player1.velocityY = 0
+      
     }
     else if(key === "ArrowDown"){
       player1.y = 1;
+      player1.velocityY = 0
     }
     else if(key === "ArrowLeft"){
       player1.x = -1;
+      player1.velocityX = 0
     }
     else if(key === "ArrowRight"){
       player1.x = 1;
+      player1.velocityX = 0
     }
 
     //player2 movement
     if(key === "w"){
         player2.y = -1;
+        player2.velocityY = 0
       }
       else if(key === "s"){
         player2.y = 1;
+        player2.velocityY = 0
       }
       else if(key === "a"){
         player2.x = -1;
+        player2.velocityX = 0
       }
       else if(key === "d"){
         player2.x = 1;
+        player2.velocityX = 0
       }
   }
 

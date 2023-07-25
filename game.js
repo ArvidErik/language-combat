@@ -36,17 +36,21 @@ class Game {
         };
 
         window.requestAnimationFrame(()=>{
-
+        
         player1.move()
         player2.move()
-
-        console.log("p1 xvel: "+ player1.velocityX);
-        console.log("p1 yvel: "+ player1.velocityY);
-
-        this.collissionDetection()
+        
+        player1.countVelocity()
+        player2.countVelocity()
+        
+        // console.log("p2 xvel: "+ player2.velocityX);
+        // console.log("p2 yvel: "+ player2.velocityY);
+        
+        game.collissionDetection()
+        
+        game.overCheck()
         
 
-        this.overCheck()
         this.gameLoop()
         });
         
@@ -106,9 +110,10 @@ class Game {
         const p2Left = player2.left
         const p2Top = player2.top
 
+        let p1Power = Math.abs(player1.velocityX) + Math.abs(player1.velocityY)
+        let p2Power = Math.abs(player2.velocityX) + Math.abs(player2.velocityY)
 
-
-        const velocity = 20
+        const velocity = 10
 
         //conditions
         const tLQuarter = (p1Left < p2Left && p1Top < p2Top)
@@ -122,10 +127,32 @@ class Game {
          
 
         if (tLQuarter) {
-            player1.top -= velocity
-            player1.left -= velocity
-            player2.top += velocity
-            player2.left += velocity
+
+            if (p1Power > p2Power) {
+            console.log("P1 WON");
+            const diff = p1Power - p2Power
+            const multiplier = Math.floor(diff/50)
+            console.log(multiplier);
+
+            player1.top -= velocity * 1 - (multiplier/100)
+            player1.left -= velocity * 1 - (multiplier/100)
+            player2.top += velocity * multiplier
+            player2.left += velocity * multiplier
+            }
+
+            if (p2Power > p1Power) {
+                console.log("P2 WON");
+                const diff = p2Power - p1Power
+                const multiplier = Math.floor(diff/50)
+                console.log(multiplier);
+    
+                player1.top -= velocity * multiplier
+                player1.left -= velocity * multiplier
+                player2.top += velocity * 1 - (multiplier/100)
+                player2.left += velocity * 1 - (multiplier/100)
+                }
+
+            
 
             player1.updatePosition()
             player2.updatePosition()
@@ -134,10 +161,29 @@ class Game {
 
         }
         else if (tRQuarter){
-            player1.top -= velocity
-            player1.left += velocity
-            player2.top += velocity
-            player2.left -= velocity
+
+            if (p1Power > p2Power) {
+                console.log("P1 WON");
+                const diff = p1Power - p2Power
+                const multiplier = Math.floor(diff/50)
+                console.log(multiplier);
+
+                player1.top -= velocity * 1 - (multiplier/100)
+                player1.left += velocity * 1 - (multiplier/100)
+                player2.top += velocity * multiplier
+                player2.left -= velocity * multiplier
+            }
+            if (p2Power > p1Power) {
+                console.log("P2 WON");
+                const diff = p2Power - p1Power
+                const multiplier = Math.floor(diff/50)
+                console.log(multiplier);
+
+                player1.top -= velocity * multiplier
+                player1.left += velocity * multiplier
+                player2.top += velocity * 1 - (multiplier/100)
+                player2.left -= velocity * 1 - (multiplier/100)
+            }
 
             player1.updatePosition()
             player2.updatePosition()
@@ -146,10 +192,29 @@ class Game {
 
         }
         else if (bLQuarter){
-            player1.top += velocity
-            player1.left -= velocity
-            player2.top -= velocity
-            player2.left += velocity
+
+            if (p1Power > p2Power) {
+                console.log("P1 WON");
+                const diff = p1Power - p2Power
+                const multiplier = Math.floor(diff/50)
+                console.log(multiplier);
+
+                player1.top += velocity * 1 - (multiplier/100)
+                player1.left -= velocity * 1 - (multiplier/100)
+                player2.top -= velocity * multiplier
+                player2.left += velocity * multiplier
+            }
+            if (p2Power > p1Power) {
+                console.log("P2 WON");
+                const diff = p2Power - p1Power
+                const multiplier = Math.floor(diff/50)
+                console.log(multiplier);
+
+                player1.top += velocity * multiplier
+                player1.left -= velocity * multiplier
+                player2.top -= velocity * 1 - (multiplier/100)
+                player2.left += velocity * 1 - (multiplier/100)
+            }
 
             player1.updatePosition()
             player2.updatePosition()
@@ -158,10 +223,30 @@ class Game {
 
         }
         else if (bRQuarter){
-            player1.top += velocity
-            player1.left += velocity
-            player2.top -= velocity
-            player2.left -= velocity
+
+            if (p1Power > p2Power) {
+                console.log("P1 WON");
+                const diff = p1Power - p2Power
+                const multiplier = Math.floor(diff/50)
+                console.log(multiplier);
+
+                player1.top += velocity * 1 - (multiplier/100)
+                player1.left += velocity * 1 - (multiplier/100)
+                player2.top -= velocity * multiplier
+                player2.left -= velocity * multiplier
+            }
+            if (p2Power > p1Power) {
+                console.log("P2 WON");
+                const diff = p2Power - p2Power
+                const multiplier = Math.floor(diff/50)
+                console.log(multiplier);
+
+                player1.top += velocity * multiplier
+                player1.left += velocity * multiplier
+                player2.top -= velocity * 1 - (multiplier/100)
+                player2.left -= velocity * 1 - (multiplier/100)
+            }
+
 
             player1.updatePosition()
             player2.updatePosition()
@@ -200,8 +285,17 @@ class Game {
 
         }
         else if (rside){
-            player1.left += velocity
-            player2.left -= velocity
+
+            if (p1Power > p2Power) {
+
+            console.log("P1 WON");
+            const diff = p1Power - p2Power
+            const multiplier = Math.floor(diff/50)
+            console.log(multiplier);
+
+            player1.left += velocity * 1 - (multiplier/100)
+            player2.left -= velocity * multiplier
+            }
 
             player1.updatePosition()
             player2.updatePosition()

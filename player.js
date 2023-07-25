@@ -2,6 +2,7 @@ class Player {
     constructor (imgSrc, left, top, type) {
         this.x = 0
         this.y = 0
+        this.xValues = []
         this.left = left
         this.top = top
         this.type = type
@@ -12,7 +13,6 @@ class Player {
         this.velocityY = 0
         this.element = document.createElement("img")
         this.platform = document.querySelector("#platform")
-        
         this.element.src = imgSrc
         this.element.style.position = "absolute"
         this.element.style.width = "50px"
@@ -29,7 +29,14 @@ class Player {
     move() {
         this.left += this.x;
         this.top += this.y;
+
+        this.checkLimit()
      
+        this.updatePosition();
+        
+    }
+
+    checkLimit () {
         if(this.left <0){
             this.isEliminated = true;
             this.element.style.opacity = "0.2";
@@ -57,8 +64,6 @@ class Player {
             game.gameIsOver = true;
             game.scoreCheck()
         }
-        this.updatePosition();
-        
     }
 
     updatePosition(){
@@ -89,15 +94,16 @@ class Player {
             this.isEliminated = false           
         }
     };
- 
-    restoreVelocity(px, py){
-        if (px > 0) {
-            this.velocityX = 0
-        }
 
-        if (py != this.y) {
-            this.velocityY = 0
-        }
+    countVelocity () {
+
+        this.velocityX += this.x;
+        this.velocityY += this.y;
+
+    }
+
+    power(){
+
     }
 
     
