@@ -6,7 +6,10 @@ class Game {
         this.selectFighterScreen = document.querySelector("#select-fighter-screen")
         this.gameScreen = document.querySelector("#game-screen")
         this.endScreen = document.querySelector("#end-screen")
-
+        this.platform = document.getElementById("platform")
+        this.platformWidth = 400
+        this.platformHeight = 400
+        this.platformShrinkRate = 0.05
 
         this.scoreP1 = 0
         this.scoreP2 = 0
@@ -49,6 +52,11 @@ class Game {
         game.collissionDetection()
         
         game.overCheck()
+
+        setTimeout (()=>{
+            game.shrinkPlatform()
+
+        }, 3000)
 
         this.gameLoop()
         });
@@ -373,10 +381,18 @@ class Game {
         }
     }
 
-    // shrinkPlatform(){
-    //     setInterval(()=>{
-    //         platformWidth -= 1+"px"
-    //     },1000)  
-    // }
+    shrinkPlatform(){
+
+        setInterval(()=>{
+            
+            this.platformWidth -= this.platformShrinkRate
+            this.platformHeight -= this.platformShrinkRate
+
+            this.platform.style.width = `${this.platformWidth}px`
+            this.platform.style.height = `${this.platformHeight}px`
+            
+        },1000)  
+    }
+
 }
 
