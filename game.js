@@ -11,6 +11,7 @@ class Game {
         this.platformHeight = 400
         this.platformShrinkRate = 0.1
         this.selectedFighters = []
+        this.selectedFighterNames = []
 
         this.scoreP1 = 0
         this.scoreP2 = 0

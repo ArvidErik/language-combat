@@ -14,7 +14,7 @@
         <div class="center">
         <h1 id="title">Language Combat</h1>
         <h2 id="sub-title">Let's find out which is the best programming language</h2>
-        <button id="start-btn">START</button>
+        <button id="start-btn" class="btn">START</button>
         </div>
     </section>
 
@@ -23,19 +23,20 @@
     <h1 id="title">Language Combat</h1>
     </div>
     <div class="center">
-    <h2 id="score-board"><strong id="p2-score">0</strong> {P2} vs {P1} <strong id="p1-score">0</strong></h2>
+    <h2 id="score-board"><strong id="p2-score">0</strong><b id="p2-name">{P2}</b> vs <b id="p1-name">{P1}</b> <strong id="p1-score">0</strong></h2>
     </div>
     <div class="center">
     <button id="next-round-btn" class="btn">Next Round</button>
     </div>
     
     <div id="platform" class="center">
-        <h1 id="count-back">3</h1>
+        <h1 id="count-back"></h1>
     </div>
     </section>
 
     <section id="end-screen" style="display: none;" class="center">
         <h1 id="game-over-text">Game Over</h1>
+        <h2 class="game-o-text">Now we know WHO is the BEST</h2>
     </section>
     
     <script src="player.js"></script>

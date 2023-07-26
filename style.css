@@ -1,5 +1,5 @@
 body {
-    background-color: lightblue;
+    background-color: rgb(101, 183, 206);
     margin: 0;
     padding: 0;
     width: 100%;
@@ -23,6 +23,7 @@ h2 {
 h4 {
     margin: 0.8em;
     font-size: 0.8em;
+    color: white
 }
 
 #title {
@@ -51,7 +52,8 @@ h4 {
 #end-screen {
     width: 500px;
     height: 300px;
-    background-color: blue;
+    background-color: #ecd448;
+    border: 3px solid black;
     position: absolute;
     top: 60%;
     left: 50%;
@@ -60,16 +62,21 @@ h4 {
 }
 
 #game-over-text{
-    color: white;
-    padding-top: 120px;
+    color: black;
+    padding-top: 100px;
+}
+.game-o-text{
+    color: black;
 }
 
 #p1{
     border: 2px solid red;
+    background-color: white;
 }
 
 #p2{
     border: 2px solid blue;
+    background-color: white;
 }
 
 #title {
@@ -84,6 +91,70 @@ h4 {
     z-index: 2;
 }
 
+#p1-name{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+#p2-name{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#p1-score{
+    color: red;
+}
+#p2-score{
+    color: blue;
+    
+}
+
+#next-round-btn {
+    display: none;
+    
+}
+
+.btn {
+    padding: 0.7em 2em;
+    background: none;
+    border: 2px solid #fff;
+    font-size: 15px;
+    color: #131313;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    border-radius: 12px;
+    background-color: #ecd448;
+    font-weight: bolder;
+    box-shadow: 0 2px 0 2px #000;
+   }
+   
+   .btn:before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 120%;
+    background-color: #ff6700;
+    top: 50%;
+    transform: skewX(30deg) translate(-150%, -50%);
+    transition: all 0.5s;
+   }
+   
+   .btn:hover {
+    background-color: #4cc9f0;
+    color: #fff;
+    box-shadow: 0 2px 0 2px #0d3b66;
+   }
+   
+   .btn:hover::before {
+    transform: skewX(30deg) translate(150%, -50%);
+    transition-delay: 0.1s;
+   }
+   
+   .btn:active {
+    transform: scale(0.9);
+   }
+
 .center {
     display: flex;
     flex-direction: column;
@@ -91,9 +162,6 @@ h4 {
     align-items: center;
 }
 
-.btn {
-    display: none;
-}
 
 .fighter-container {
     margin-top: 0.8em;
@@ -121,8 +189,9 @@ h4 {
 
 .start-game-btn {
     margin-top: 2em;
-    width: 130px;
+    width: 200px;
     height: 50px;
+    font-size: 15px;
 }
 
 .p1-selected {
@@ -131,4 +200,11 @@ h4 {
 
 .p2-selected {
     border: 2px solid blue;
+}
+
+.p1{
+    color:red
+}
+.p2{
+    color:blue
 }

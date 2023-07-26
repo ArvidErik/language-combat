@@ -13,6 +13,8 @@ const subTitle = document.getElementById("sub-title")
 const fighterElements = document.getElementsByClassName("fighter")
 const selectButton = document.createElement("button")
 const startGameBtn = document.createElement("button")
+const p1Name = document.getElementById("p1-name")
+const p2Name = document.getElementById("p2-name")
 let selectCount = 0
 
 
@@ -47,7 +49,7 @@ startButton.addEventListener("click",()=>{
 
     //hide start button and change title text
     startButton.style.display = "none"
-    title.innerHTML = "Player 1 select your hero"
+    title.innerHTML = "<b class='p1'>Player 1</b> select your hero"
     subTitle.innerHTML = "Choose wisely"
 
     const textForSelectBtn = document.createTextNode("Select")
@@ -60,11 +62,14 @@ startButton.addEventListener("click",()=>{
         if (selectCount === 0) {
           element.firstChild.classList.add("p1-selected")
           game.selectedFighters.push(element.firstChild.getAttribute("src"))
-          console.log(game.selectedFighters[0]);
+          game.selectedFighterNames.push(element.lastChild.innerHTML)
+          title.innerHTML = "<b class='p2'>Player 2</b> select your hero"
+          console.log(game.selectedFighterNames[0]);
           
         } if (selectCount === 1) {
           element.firstChild.classList.add("p2-selected")
           game.selectedFighters.push(element.firstChild.getAttribute("src"))
+          game.selectedFighterNames.push(element.lastChild.innerHTML)
           console.log(game.selectedFighters[1]);
         }
         selectCount++
@@ -73,6 +78,7 @@ startButton.addEventListener("click",()=>{
           const startGameBtnContent = document.createTextNode("START GAME")
           startGameBtn.appendChild(startGameBtnContent)
           startGameBtn.className = "start-game-btn"
+          startGameBtn.classList.add("btn")
           game.startScreen.appendChild(startGameBtn)
         }
       })        
@@ -87,6 +93,9 @@ startButton.addEventListener("click",()=>{
     game.gameScreen.style.display = "block"
     player1.element.src = game.selectedFighters[0]
     player2.element.src = game.selectedFighters[1]   
+    p1Name.innerHTML = game.selectedFighterNames[0]
+    p2Name.innerHTML = game.selectedFighterNames[1]
+
     countBack();
 
     setTimeout(() => {
@@ -166,22 +175,22 @@ function handleKeyboardInput(key){
 
   function countBack () {
     const countNum = document.getElementById("count-back")
+    countNum.textContent = " "
     countNum.style.display = "Block"
-    let i = 3
+    let j = 3
 
-    setInterval(() => {
-        if (i > 0) {
-            countNum.textContent = `${i}`;
-            i--
+    const int = setInterval(() => {
+        if (j > 0) {
+            countNum.textContent = `${j}`;
+            j--
 
-        } else {
+        } else if (j === 0) {
             countNum.textContent = `GO!`;
+            clearInterval(int)
         }     
     }, 1000);
 
-    setTimeout (()=>{
-      i = 3
-    },1500)
+    
   }
 
   function selectFighter () {
