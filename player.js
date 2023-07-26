@@ -1,5 +1,5 @@
 class Player {
-    constructor (imgSrc, left, top, type) {
+    constructor (left, top, type) {
         this.x = 0
         this.y = 0
         this.xValues = []
@@ -13,7 +13,7 @@ class Player {
         this.velocityY = 0
         this.element = document.createElement("img")
         this.platform = document.querySelector("#platform")
-        this.element.src = imgSrc
+        // this.element.src = imgSrc
         this.element.style.position = "absolute"
         this.element.style.width = "50px"
         this.element.style.height = "50px"

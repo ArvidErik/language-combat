@@ -10,6 +10,7 @@ class Game {
         this.platformWidth = 400
         this.platformHeight = 400
         this.platformShrinkRate = 0.05
+        this.selectedFighters = []
 
         this.scoreP1 = 0
         this.scoreP2 = 0
@@ -44,6 +45,8 @@ class Game {
     gameLoop(){
         if (this.gameIsOver){
             console.log("Game Over");
+            clearInterval(shrink)
+
         return
         };
 
@@ -392,7 +395,7 @@ class Game {
 
     shrinkPlatform(){
 
-        setInterval(()=>{
+        let shrink = setInterval(()=>{
             
             this.platformWidth -= this.platformShrinkRate
             this.platformHeight -= this.platformShrinkRate

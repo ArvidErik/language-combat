@@ -2,8 +2,8 @@ console.log("script.js is working...");
 
 
 
-const player1 = new Player("./img/js-1.png", 250, 180, "p1")
-const player2 = new Player("./img/js-1.png", 100, 180, "p2")
+const player1 = new Player(250, 180, "p1")
+const player2 = new Player(100, 180, "p2")
 const game = new Game()
 const nextRoundBtn = document.getElementById("next-round-btn")
 const startButton = document.getElementById("start-btn")
@@ -11,15 +11,16 @@ const platform = document.querySelector("#platform")
 const title = document.getElementById("title")
 const subTitle = document.getElementById("sub-title")
 const fighterElements = document.getElementsByClassName("fighter")
+const selectButton = document.createElement("button")
+const startGameBtn = document.createElement("button")
+let selectCount = 0
 
-game.gameLoop()
 
+// SELECT HERO PART
 
 startButton.addEventListener("click",()=>{
     let newDiv = document.createElement('div')
-    let imgDiv = document.createElement('div')
     newDiv.className = "fighter-container"
-    imgDiv.className = "fighter-container"
 
     let i = 0
     game.fighterTypes.forEach((fighter)=>{
@@ -33,8 +34,6 @@ startButton.addEventListener("click",()=>{
       imgTag.className = "fighter-img"
       let imageContent =`${game.fighterImg[i]}`
       imgTag.src += imageContent
-
-      console.log(game.fighterImg[i]);
       
       i++
 
@@ -42,9 +41,8 @@ startButton.addEventListener("click",()=>{
       fighterDiv.appendChild(fighterH4)
       newDiv.appendChild(fighterDiv)
 
-      console.log(i);
-
     }) 
+
     game.startScreen.appendChild(newDiv)
 
     //hide start button and change title text
@@ -52,9 +50,46 @@ startButton.addEventListener("click",()=>{
     title.innerHTML = "Player 1 select your hero"
     subTitle.innerHTML = "Choose wisely"
 
-})
+    const textForSelectBtn = document.createTextNode("Select")
+    selectButton.appendChild(textForSelectBtn)
+    
+    for (let index = 0; index < fighterElements.length; index++) {
+      const element = fighterElements[index];
+      
+      element.addEventListener("click", ()=>{
+        if (selectCount === 0) {
+          element.firstChild.classList.add("p1-selected")
+          game.selectedFighters.push(element.firstChild.getAttribute("src"))
+          console.log(game.selectedFighters[0]);
+          
+        } if (selectCount === 1) {
+          element.firstChild.classList.add("p2-selected")
+          game.selectedFighters.push(element.firstChild.getAttribute("src"))
+          console.log(game.selectedFighters[1]);
+        }
+        selectCount++
+        
+        if (selectCount === 2) {
+          const startGameBtnContent = document.createTextNode("START GAME")
+          startGameBtn.appendChild(startGameBtnContent)
+          startGameBtn.className = "start-game-btn"
+          game.startScreen.appendChild(startGameBtn)
+        }
+      })        
+    }
+  })
 
+  
 
+  startGameBtn.addEventListener("click", ()=>{
+    console.log("click");
+    game.startScreen.style.display = "none"
+    game.gameScreen.style.display = "block"
+    player1.element.src = game.selectedFighters[0]
+    player2.element.src = game.selectedFighters[1]   
+    game.gameLoop()
+  });
+  
 
 
 window.addEventListener("keydown",(event)=>{
@@ -132,5 +167,11 @@ function handleKeyboardInput(key){
             clearInterval()
         }     
     }, 1000);
+  }
+
+  function selectFighter () {
+    let selectButton = document.createElement("button").innerHTML("SELECT")
+    newDiv.appendChild(selectButton)
+    console.log("button pressed!");
   }
 
