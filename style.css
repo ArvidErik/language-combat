@@ -77,6 +77,13 @@ h4 {
     font-size: 2em;
 }
 
+#count-back {
+    color: black;
+    font-size: 64px;
+    display: none;
+    z-index: 2;
+}
+
 .center {
     display: flex;
     flex-direction: column;

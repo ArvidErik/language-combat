@@ -87,7 +87,12 @@ startButton.addEventListener("click",()=>{
     game.gameScreen.style.display = "block"
     player1.element.src = game.selectedFighters[0]
     player2.element.src = game.selectedFighters[1]   
-    game.gameLoop()
+    countBack();
+
+    setTimeout(() => {
+      removeCounter()
+      game.gameLoop() 
+      }, 5000);
   });
   
 
@@ -103,9 +108,11 @@ nextRoundBtn.addEventListener("click", ()=>{
     nextRoundBtn.style.display = "none"
     countBack();
     setTimeout(() => {
-    game.gameLoop() 
-    }, 3000);
-})
+      removeCounter()
+      game.gameLoop() 
+      }, 5000);
+  });
+
 
 
 
@@ -158,20 +165,34 @@ function handleKeyboardInput(key){
   }
 
   function countBack () {
+    const countNum = document.getElementById("count-back")
+    countNum.style.display = "Block"
     let i = 3
 
     setInterval(() => {
         if (i > 0) {
-            console.log(i--);
+            countNum.textContent = `${i}`;
+            i--
+
         } else {
-            clearInterval()
+            countNum.textContent = `GO!`;
         }     
     }, 1000);
+
+    setTimeout (()=>{
+      i = 3
+    },1500)
   }
 
   function selectFighter () {
     let selectButton = document.createElement("button").innerHTML("SELECT")
     newDiv.appendChild(selectButton)
     console.log("button pressed!");
+  }
+
+  function removeCounter () {
+    const countNum = document.getElementById("count-back")
+    countNum.style.display = "none"
+
   }
 
