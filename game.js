@@ -49,7 +49,6 @@ class Game {
         game.collissionDetection()
         
         game.overCheck()
-        
 
         this.gameLoop()
         });
@@ -134,8 +133,8 @@ class Game {
             const multiplier = Math.floor(diff/50)
             console.log(multiplier);
 
-            player1.top -= velocity * 1 - (multiplier/100)
-            player1.left -= velocity * 1 - (multiplier/100)
+            player1.top -= velocity * (1 - (multiplier/100))
+            player1.left -= velocity * (1 - (multiplier/100))
             player2.top += velocity * multiplier
             player2.left += velocity * multiplier
             }
@@ -148,11 +147,9 @@ class Game {
     
                 player1.top -= velocity * multiplier
                 player1.left -= velocity * multiplier
-                player2.top += velocity * 1 - (multiplier/100)
-                player2.left += velocity * 1 - (multiplier/100)
+                player2.top += velocity * (1 - (multiplier/100))
+                player2.left += velocity * (1 - (multiplier/100))
                 }
-
-            
 
             player1.updatePosition()
             player2.updatePosition()
@@ -168,8 +165,8 @@ class Game {
                 const multiplier = Math.floor(diff/50)
                 console.log(multiplier);
 
-                player1.top -= velocity * 1 - (multiplier/100)
-                player1.left += velocity * 1 - (multiplier/100)
+                player1.top -= velocity * (1 - (multiplier/100))
+                player1.left += velocity * (1 - (multiplier/100))
                 player2.top += velocity * multiplier
                 player2.left -= velocity * multiplier
             }
@@ -181,8 +178,8 @@ class Game {
 
                 player1.top -= velocity * multiplier
                 player1.left += velocity * multiplier
-                player2.top += velocity * 1 - (multiplier/100)
-                player2.left -= velocity * 1 - (multiplier/100)
+                player2.top += velocity * (1 - (multiplier/100))
+                player2.left -= velocity * (1 - (multiplier/100))
             }
 
             player1.updatePosition()
@@ -199,8 +196,8 @@ class Game {
                 const multiplier = Math.floor(diff/50)
                 console.log(multiplier);
 
-                player1.top += velocity * 1 - (multiplier/100)
-                player1.left -= velocity * 1 - (multiplier/100)
+                player1.top += velocity * (1 - (multiplier/100))
+                player1.left -= velocity * (1 - (multiplier/100))
                 player2.top -= velocity * multiplier
                 player2.left += velocity * multiplier
             }
@@ -212,8 +209,8 @@ class Game {
 
                 player1.top += velocity * multiplier
                 player1.left -= velocity * multiplier
-                player2.top -= velocity * 1 - (multiplier/100)
-                player2.left += velocity * 1 - (multiplier/100)
+                player2.top -= velocity * (1 - (multiplier/100))
+                player2.left += velocity * (1 - (multiplier/100))
             }
 
             player1.updatePosition()
@@ -230,8 +227,8 @@ class Game {
                 const multiplier = Math.floor(diff/50)
                 console.log(multiplier);
 
-                player1.top += velocity * 1 - (multiplier/100)
-                player1.left += velocity * 1 - (multiplier/100)
+                player1.top += velocity * (1 - (multiplier/100))
+                player1.left += velocity * (1 - (multiplier/100))
                 player2.top -= velocity * multiplier
                 player2.left -= velocity * multiplier
             }
@@ -243,8 +240,8 @@ class Game {
 
                 player1.top += velocity * multiplier
                 player1.left += velocity * multiplier
-                player2.top -= velocity * 1 - (multiplier/100)
-                player2.left -= velocity * 1 - (multiplier/100)
+                player2.top -= velocity * (1 - (multiplier/100))
+                player2.left -= velocity * (1 - (multiplier/100))
             }
 
 
@@ -255,8 +252,28 @@ class Game {
 
         }
         else if (tside){
-            player1.top += velocity
-            player2.top -= velocity
+            
+            if (p1Power > p2Power) {
+                
+                console.log("P1 WON");
+                const diff = p1Power - p2Power
+                const multiplier = Math.floor(diff/50)
+                console.log(multiplier);
+                
+                player1.top -= velocity * (1 - (multiplier/100))
+                player2.top += velocity * multiplier
+            }
+
+            if (p2Power > p1Power) {
+                
+                console.log("P2 WON");
+                const diff = p2Power - p1Power
+                const multiplier = Math.floor(diff/50)
+                console.log(multiplier);
+                
+                player1.top -= velocity * multiplier
+                player2.top += velocity * (1 - (multiplier/100))
+            }
 
             player1.updatePosition()
             player2.updatePosition()
@@ -265,8 +282,29 @@ class Game {
 
         }
         else if (bside){
-            player1.top -= velocity
-            player2.top += velocity
+
+            if (p1Power > p2Power) {
+
+                console.log("P1 WON");
+                const diff = p1Power - p2Power
+                const multiplier = Math.floor(diff/50)
+                console.log(multiplier);
+
+                player1.top += velocity * (1 - (multiplier/100))
+                player2.top -= velocity * multiplier
+            }
+
+            if (p2Power > p1Power) {
+
+                console.log("P2 WON");
+                const diff = p2Power - p1Power
+                const multiplier = Math.floor(diff/50)
+                console.log(multiplier);
+
+                player1.top += velocity * multiplier
+                player2.top -= velocity * (1 - (multiplier/100))
+            }
+            
 
             player1.updatePosition()
             player2.updatePosition()
@@ -275,8 +313,28 @@ class Game {
 
         }
         else if (lside){
-            player1.left -= velocity
-            player2.left += velocity
+
+            if (p1Power > p2Power) {
+
+                console.log("P1 WON");
+                const diff = p1Power - p2Power
+                const multiplier = Math.floor(diff/50)
+                console.log(multiplier);
+
+                player1.left -= velocity * (1 - (multiplier/100))
+                player2.left += velocity * multiplier
+            }
+
+            if (p2Power > p1Power) {
+
+                console.log("P2 WON");
+                const diff = p2Power - p1Power
+                const multiplier = Math.floor(diff/50)
+                console.log(multiplier);
+
+                player1.left -= velocity * multiplier
+                player2.left += velocity * (1 - (multiplier/100))
+            }
 
             player1.updatePosition()
             player2.updatePosition()
@@ -293,9 +351,20 @@ class Game {
             const multiplier = Math.floor(diff/50)
             console.log(multiplier);
 
-            player1.left += velocity * 1 - (multiplier/100)
+            player1.left += velocity * (1 - (multiplier/100))
             player2.left -= velocity * multiplier
             }
+
+            if (p2Power > p1Power) {
+
+                console.log("P2 WON");
+                const diff = p2Power - p1Power
+                const multiplier = Math.floor(diff/50)
+                console.log(multiplier);
+    
+                player1.left += velocity * multiplier
+                player2.left -= velocity * (1 - (multiplier/100))
+                }
 
             player1.updatePosition()
             player2.updatePosition()
@@ -304,6 +373,10 @@ class Game {
         }
     }
 
-
+    // shrinkPlatform(){
+    //     setInterval(()=>{
+    //         platformWidth -= 1+"px"
+    //     },1000)  
+    // }
 }
 
