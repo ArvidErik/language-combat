@@ -19,10 +19,10 @@ class Game {
             "./img/py.png",
             "./img/java.png",
             "./img/js-1.png",
-            "./img/c#.png",
+            "./img/csharp.png",
             "./img/php.png",
             "./img/ts.png",
-            "./img/c++.png",
+            "./img/cplus.png"
         ]
     };
 

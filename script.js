@@ -10,6 +10,7 @@ const startButton = document.getElementById("start-btn")
 const platform = document.querySelector("#platform")
 const title = document.getElementById("title")
 const subTitle = document.getElementById("sub-title")
+const fighterElements = document.getElementsByClassName("fighter")
 
 game.gameLoop()
 
@@ -30,12 +31,18 @@ startButton.addEventListener("click",()=>{
 
       let imgTag = document.createElement('img')
       imgTag.className = "fighter-img"
-      let imageContent = document.createTextNode(game.fighterImg[i])
+      let imageContent =`${game.fighterImg[i]}`
       imgTag.src += imageContent
+
+      console.log(game.fighterImg[i]);
+      
+      i++
 
       fighterDiv.appendChild(imgTag)
       fighterDiv.appendChild(fighterH4)
       newDiv.appendChild(fighterDiv)
+
+      console.log(i);
 
     }) 
     game.startScreen.appendChild(newDiv)
@@ -46,6 +53,8 @@ startButton.addEventListener("click",()=>{
     subTitle.innerHTML = "Choose wisely"
 
 })
+
+
 
 
 window.addEventListener("keydown",(event)=>{
