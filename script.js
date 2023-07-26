@@ -8,22 +8,43 @@ const game = new Game()
 const nextRoundBtn = document.getElementById("next-round-btn")
 const startButton = document.getElementById("start-btn")
 const platform = document.querySelector("#platform")
+const title = document.getElementById("title")
+const subTitle = document.getElementById("sub-title")
 
 game.gameLoop()
 
 
 startButton.addEventListener("click",()=>{
     let newDiv = document.createElement('div')
+    let imgDiv = document.createElement('div')
     newDiv.className = "fighter-container"
+    imgDiv.className = "fighter-container"
+
+    let i = 0
     game.fighterTypes.forEach((fighter)=>{
       let fighterDiv = document.createElement('div')
       fighterDiv.className = "fighter"
+      let fighterH4 = document.createElement('h4')
       let figtherContent = document.createTextNode(fighter)
+      fighterH4.appendChild(figtherContent)
 
-      fighterDiv.appendChild(figtherContent)
+      let imgTag = document.createElement('img')
+      imgTag.className = "fighter-img"
+      let imageContent = document.createTextNode(game.fighterImg[i])
+      imgTag.src += imageContent
+
+      fighterDiv.appendChild(imgTag)
+      fighterDiv.appendChild(fighterH4)
       newDiv.appendChild(fighterDiv)
-    })
+
+    }) 
     game.startScreen.appendChild(newDiv)
+
+    //hide start button and change title text
+    startButton.style.display = "none"
+    title.innerHTML = "Player 1 select your hero"
+    subTitle.innerHTML = "Choose wisely"
+
 })
 
 

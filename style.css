@@ -20,6 +20,11 @@ h2 {
     color: white;
 }
 
+h4 {
+    margin: 0.8em;
+    font-size: 0.8em;
+}
+
 #title {
     margin: 5px;
 }
@@ -66,7 +71,7 @@ h2 {
     border: 2px solid blue;
 }
 
-.title {
+#title {
     color: white;
     font-size: 2em;
 }
@@ -83,11 +88,19 @@ h2 {
 }
 
 .fighter-container {
-    margin-top: 2.5em;
+    margin-top: 0.8em;
     align-self: center;
     width: 80vw;
     display: flex;
     align-self: center;
     flex-direction: row;
     justify-content: space-around;
+    font-size: 20px;
+    text-align: center;
+}
+
+.fighter-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }

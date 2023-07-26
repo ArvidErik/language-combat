@@ -15,6 +15,15 @@ class Game {
         this.scoreP2 = 0
         this.gameIsOver = false
         this.fighterTypes = ["Python", "Java", "JavaScript", "C#", "PHP", "TypeScript", "C++"]
+        this.fighterImg = [
+            "./img/py.png",
+            "./img/java.png",
+            "./img/js-1.png",
+            "./img/c#.png",
+            "./img/php.png",
+            "./img/ts.png",
+            "./img/c++.png",
+        ]
     };
 
     
