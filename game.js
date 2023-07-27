@@ -59,8 +59,8 @@ class Game {
         player1.countVelocity()
         player2.countVelocity()
         
-        // console.log("p2 xvel: "+ player2.velocityX);
-        // console.log("p2 yvel: "+ player2.velocityY);
+        // console.log("p1 xvel: "+ player1.velocityX);
+        // console.log("p1 yvel: "+ player1.velocityY);
         
         game.collissionDetection()
         
@@ -413,6 +413,5 @@ class Game {
         this.platform.style.width = "400px"
         this.platform.style.height = "400px"
     }
-
 }
 
