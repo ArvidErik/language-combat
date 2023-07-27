@@ -113,4 +113,6 @@ class Player {
         this.velocityX += this.x;
         this.velocityY += this.y;
     }
+
+  
 }

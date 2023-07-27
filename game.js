@@ -34,7 +34,7 @@ class Game {
 
     //DEFINING METHODS ---------------------------------------------------------
 
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // INITIATES THE GAME
     start(){
     game.startScreen.style.display = "none"
     game.gameScreen.style.display = "block"
@@ -152,6 +152,8 @@ class Game {
         //THE VELOCITY KEEPS ADDING UP UNLESS THE PLAYER CHANGES DIRECTION
         let p1Power = Math.abs(player1.velocityX) + Math.abs(player1.velocityY)
         let p2Power = Math.abs(player2.velocityX) + Math.abs(player2.velocityY)
+        
+        
         const p1Stronger = p1Power - p2Power
         const p2Stronger = p2Power - p1Power
         //BASE BOUNCE. THE PLAYERS BOUNCE BACK 10PX IF THE POWER IS 0. 
