@@ -133,10 +133,8 @@ class Game {
     
         // If the distance is less than the minimum distance, a collision is detected and bounceBack() is applied
         if (distance <= minDistance) {
-            console.log('Collision detected!');
             this.bounceBack()
         }
-     
     }
     //APPLIES A BOUNCE BACK EFFECT INCLUDING A VELOCITY MULTIPLIER
     bounceBack() {
@@ -152,8 +150,7 @@ class Game {
         //THE VELOCITY KEEPS ADDING UP UNLESS THE PLAYER CHANGES DIRECTION
         let p1Power = Math.abs(player1.velocityX) + Math.abs(player1.velocityY)
         let p2Power = Math.abs(player2.velocityX) + Math.abs(player2.velocityY)
-        
-        
+        //CALCULATING THE POWER DIFFERENCE AVOIDING NEGATIVE NUMBERS
         const p1Stronger = p1Power - p2Power
         const p2Stronger = p2Power - p1Power
         //BASE BOUNCE. THE PLAYERS BOUNCE BACK 10PX IF THE POWER IS 0. 
