@@ -1,6 +1,3 @@
-console.log("script.js is working...");
-
-
 
 const player1 = new Player(250, 180, "p1")
 const player2 = new Player(100, 180, "p2")
@@ -17,84 +14,21 @@ const p1Name = document.getElementById("p1-name")
 const p2Name = document.getElementById("p2-name")
 let selectCount = 0
 
-
 // SELECT HERO PART
-
 startButton.addEventListener("click",()=>{
-    let newDiv = document.createElement('div')
-    newDiv.className = "fighter-container"
-
-    let i = 0
-    game.fighterTypes.forEach((fighter)=>{
-      let fighterDiv = document.createElement('div')
-      fighterDiv.className = "fighter"
-      let fighterH4 = document.createElement('h4')
-      let figtherContent = document.createTextNode(fighter)
-      fighterH4.appendChild(figtherContent)
-
-      let imgTag = document.createElement('img')
-      imgTag.className = "fighter-img"
-      let imageContent =`${game.fighterImg[i]}`
-      imgTag.src += imageContent
-      
-      i++
-
-      fighterDiv.appendChild(imgTag)
-      fighterDiv.appendChild(fighterH4)
-      newDiv.appendChild(fighterDiv)
-
-    }) 
-
-    game.startScreen.appendChild(newDiv)
-
-    //hide start button and change title text
-    startButton.style.display = "none"
-    title.innerHTML = "<b class='p1'>Player 1</b> select your hero"
-    subTitle.innerHTML = "Choose wisely"
-
-    const textForSelectBtn = document.createTextNode("Select")
-    selectButton.appendChild(textForSelectBtn)
     
-    for (let index = 0; index < fighterElements.length; index++) {
-      const element = fighterElements[index];
-      
-      element.addEventListener("click", ()=>{
-        if (selectCount === 0) {
-          element.firstChild.classList.add("p1-selected")
-          game.selectedFighters.push(element.firstChild.getAttribute("src"))
-          game.selectedFighterNames.push(element.lastChild.innerHTML)
-          title.innerHTML = "<b class='p2'>Player 2</b> select your hero"
-          console.log(game.selectedFighterNames[0]);
-          
-        } if (selectCount === 1) {
-          element.firstChild.classList.add("p2-selected")
-          game.selectedFighters.push(element.firstChild.getAttribute("src"))
-          game.selectedFighterNames.push(element.lastChild.innerHTML)
-          console.log(game.selectedFighters[1]);
-        }
-        selectCount++
-        
-        if (selectCount === 2) {
-          const startGameBtnContent = document.createTextNode("START GAME")
-          startGameBtn.appendChild(startGameBtnContent)
-          startGameBtn.className = "start-game-btn"
-          startGameBtn.classList.add("btn")
-          game.startScreen.appendChild(startGameBtn)
-        }
-      })        
-    }
+    createFighterElements()
+    //hide start button and change title text
+    updateContent()
+    
+    selectionCount()
+    
   })
-
-  
 
   startGameBtn.addEventListener("click", ()=>{
     console.log("click");
-    game.startScreen.style.display = "none"
-    game.gameScreen.style.display = "block"
-    player1.element.src = game.selectedFighters[0]
-    player2.element.src = game.selectedFighters[1]   
-    p1Name.innerHTML = game.selectedFighterNames[0]
-    p2Name.innerHTML = game.selectedFighterNames[1]
+    
+    game.start()
 
     countBack();
 
@@ -104,31 +38,13 @@ startButton.addEventListener("click",()=>{
       }, 5000);
   });
   
-
-
 window.addEventListener("keydown",(event)=>{
     handleKeyboardInput(event.key)
   })
 
 nextRoundBtn.addEventListener("click", ()=>{
-    player1.resetPosition()
-    player2.resetPosition()
-    game.gameIsOver = false
-    nextRoundBtn.style.display = "none"
-    countBack();
-    setTimeout(() => {
-      removeCounter()
-      game.gameLoop() 
-      }, 5000);
+    nextRoundBtnBehav()
   });
-
-
-
-
-
-
-
-
 
 
 // Script related functions ----------------------------------------------------
@@ -203,5 +119,87 @@ function handleKeyboardInput(key){
     const countNum = document.getElementById("count-back")
     countNum.style.display = "none"
 
+  }
+
+  function createFighterElements() {
+    
+    let newDiv = document.createElement('div')
+    newDiv.className = "fighter-container"
+
+    let i = 0
+    game.fighterTypes.forEach((fighter)=>{
+      let fighterDiv = document.createElement('div')
+      fighterDiv.className = "fighter"
+      let fighterH4 = document.createElement('h4')
+      let figtherContent = document.createTextNode(fighter)
+      fighterH4.appendChild(figtherContent)
+
+      let imgTag = document.createElement('img')
+      imgTag.className = "fighter-img"
+      let imageContent =`${game.fighterImgs[i]}`
+      imgTag.src += imageContent
+      
+      i++
+
+      fighterDiv.appendChild(imgTag)
+      fighterDiv.appendChild(fighterH4)
+      newDiv.appendChild(fighterDiv)
+
+    }) 
+
+    game.startScreen.appendChild(newDiv)
+  }
+
+  function updateContent() {
+    startButton.style.display = "none"
+    title.innerHTML = "<b class='p1'>Player 1</b> select your hero"
+    subTitle.innerHTML = "Choose wisely"
+  }
+
+  function selectionCount () {
+
+    for (let index = 0; index < fighterElements.length; index++) {
+      const element = fighterElements[index];
+      
+      element.addEventListener("click", ()=>{
+        if (selectCount === 0) {
+          element.firstChild.classList.add("p1-selected")
+          game.selectedFighterUrls.push(element.firstChild.getAttribute("src"))
+          game.selectedFighterNames.push(element.lastChild.innerHTML)
+          title.innerHTML = "<b class='p2'>Player 2</b> select your hero"
+          console.log(game.selectedFighterNames[0]);
+          
+        } if (selectCount === 1) {
+          element.firstChild.classList.add("p2-selected")
+          game.selectedFighterUrls.push(element.firstChild.getAttribute("src"))
+          game.selectedFighterNames.push(element.lastChild.innerHTML)
+          console.log(game.selectedFighterUrls[1]);
+        }
+        selectCount++
+        
+        if (selectCount === 2) {
+          const startGameBtnContent = document.createTextNode("START GAME")
+          startGameBtn.appendChild(startGameBtnContent)
+          startGameBtn.className = "start-game-btn"
+          startGameBtn.classList.add("btn")
+          game.startScreen.appendChild(startGameBtn)
+        }
+      }) 
+             
+    }
+
+   
+  }
+
+  function nextRoundBtnBehav() {
+    player1.resetPosition()
+    player2.resetPosition()
+    game.roundIsOver = false
+    nextRoundBtn.style.display = "none"
+    countBack();
+    setTimeout(() => {
+      removeCounter()
+      game.gameLoop() 
+      }, 5000);
   }
 

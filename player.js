@@ -38,6 +38,7 @@ class Player {
         //CALLING METHOD TO CONTINOUSLY UPDATE DOM ELEMENT
         this.updatePosition();      
     }
+
     //CHECKS IF PLAYER IS OUT OF TRACK, STOPS THE GAME AND ADDS SCORES
     checkLimit () {
 
@@ -48,36 +49,38 @@ class Player {
         if(this.left <0){
             this.isEliminated = true;
             this.element.style.opacity = "0.2";
-            game.gameIsOver = true;
+            game.roundIsOver = true;
             game.scoreCheck()
         }
         //CHECKS TOP BORDER
         if(this.top <0){
             this.isEliminated = true;
             this.element.style.opacity = "0.2";
-            game.gameIsOver = true;
+            game.roundIsOver = true;
             game.scoreCheck()
         }
         //CHECKS RIGHT BORER
         if (this.left > this.platform.offsetWidth - this.width) {
             this.isEliminated = true;
             this.element.style.opacity = "0.2";
-            game.gameIsOver = true;
+            game.roundIsOver = true;
             game.scoreCheck()
         }
         //CHECKS BOTTOM BORDER
         if (this.top > this.platform.offsetHeight - this.height) {
             this.isEliminated = true;
             this.element.style.opacity = "0.2";
-            game.gameIsOver = true;
+            game.roundIsOver = true;
             game.scoreCheck()
         }
     }
+
     //UPDATES THE PLAYER POSITIONS DYNAMICALLY
     updatePosition(){
             this.element.style.left = `${this.left}px`
             this.element.style.top = `${this.top}px`
     }
+
     //RESETS THE PLAYERS POSITION TO THE STARTING POINT
     resetPosition(){
         //PLAYER1 DEFAULT POSITION
@@ -102,6 +105,7 @@ class Player {
             this.isEliminated = false           
         }
     };
+
     //CALCULATES THE VELOCITY OF THE PLAYERS
     countVelocity () {
         /*THE FUNCTION IN game.js CALLED handleKeyboardInput() RESETS THE VELOCITY TO ZERO
