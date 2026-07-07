@@ -34,7 +34,6 @@ The project cointains 6 files, 3 JavaScript, 1 HTML, 1 CSS and 1 README file. Th
 
 One of the lessons learned of this project was the usage of the game loop. I am using my gameLoop() method a lot to call different methods and functions. On the computer I had been developing, everything was running smoothly, but when I checked the game on a more powerful system, the game was faster and not as enjoyable as on the other device. So if you find the game a bit quicker than expected, you probably have a lot of FPS. 
 
-
 ### Movement
 
 The fighters/circles are moving to a direction automaticaly. There's no need to hold the keys pressed down. This is a decision made to make the game a bit more difficult. Player1 can navigat with arrow keys while Player2 needs to use "WASD". The players can move verticaly and horizontaly at the beggining of the game but once you apply both directions, they can only proceed diagonally as the program takes keys as pressed down until you press the opposite direction.
