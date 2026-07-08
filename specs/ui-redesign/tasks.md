@@ -14,7 +14,7 @@ and constraints these tasks must respect.
   *Commit:* once verified, write a commit message (max 250 words, bullet
   points) summarizing the change and commit before starting the next task.
 
-- [ ] **2. Start screen shell + title/subtitle** — Apply neon title glow,
+- [x] **2. Start screen shell + title/subtitle** — Apply neon title glow,
   uppercase/letter-spacing treatment, muted subtitle, dark vignette on
   `#start-screen`.
   *Verify:* title glows, layout/centering unchanged, clicking Start still

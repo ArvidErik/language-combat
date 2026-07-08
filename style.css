@@ -77,6 +77,20 @@ h4 {
 
 #title {
     margin: 5px;
+    color: var(--text-primary);
+    font-size: 2em;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-shadow: var(--glow-gold), 0 0 32px rgba(255, 204, 51, 0.35);
+}
+
+#sub-title {
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    font-size: 0.9em;
 }
 
 #platform {
@@ -98,8 +112,8 @@ h4 {
     text-align: center;
     background-image: linear-gradient(
         to bottom,
-        rgba(1, 58, 76, 0.5),
-        rgba(156, 133, 1, 0.5)
+        rgba(5, 7, 13, 0.9),
+        rgba(5, 7, 13, 0.75)
       ), url("./img/bg.gif");
     background-repeat: no-repeat;
     background-size: cover;
@@ -141,11 +155,6 @@ h4 {
 #p2{
     border: 2px solid blue;
     background-color: white;
-}
-
-#title {
-    color: white;
-    font-size: 2em;
 }
 
 #count-back {
